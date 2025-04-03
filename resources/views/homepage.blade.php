@@ -14,6 +14,17 @@
         }
     }" x-init="init()" class="bg-black w-screen min-h-screen text-white">
         @include('navbar')
+        <style>
+            .swiper-pagination-bullet {
+                background: #4b5563 !important; 
+                opacity: 1;
+            }
+        
+            .swiper-pagination-bullet-active {
+                background: #f97316 !important;
+            }
+        </style>
+        
 
         <div class="relative w-screen h-[90vh] bg-black">
             <div class="swiper-container w-full h-full">
