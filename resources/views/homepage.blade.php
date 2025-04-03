@@ -163,7 +163,7 @@
                     </button>
 
                     <div id="more" x-ref="moreDropdown" x-show="showAllGenres" @click.outside="showAllGenres = false"
-                        class="absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40 max-h-56 overflow-y-auto" x-transition>
+                        class="absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40 max-h-48 overflow-y-auto" x-transition>
                         <template x-for="genre in hiddenGenres" :key="'more-' + genre.id">
                             <button @click="activeGenre = genre.id; showAllGenres = false"
                                 class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-700"
