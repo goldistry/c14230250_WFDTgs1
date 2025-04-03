@@ -81,17 +81,44 @@
                     },
 
                     get hiddenGenres() {
-                        return this.genres.length > this.visibleGenresCount ?
-                            this.genres.slice(this.visibleGenresCount) : [];
-
+                        return this.genres.length > this.visibleGenresCount ? this.genres.slice(this.visibleGenresCount) :
+                        [];
                     },
 
                     init() {
                         window.addEventListener('resize', () => {
                             this.screenWidth = window.innerWidth;
                         });
+                    },
+
+                    enableDropdownScroll() {
+                        this.$nextTick(() => {
+                            const dropdown = this.$refs.moreDropdown;
+                            if (dropdown) {
+                                dropdown.addEventListener('wheel', function(e) {
+                                    const el = this;
+                                    const scrollTop = el.scrollTop;
+                                    const scrollHeight = el.scrollHeight;
+                                    const offsetHeight = el.offsetHeight;
+                                    const delta = e.deltaY;
+
+                                    const up = delta < 0;
+                                    const down = delta > 0;
+
+                                    const atTop = scrollTop === 0;
+                                    const atBottom = scrollTop + offsetHeight >= scrollHeight - 1;
+
+                                    if ((up && atTop) || (down && atBottom)) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }
+                                }, {
+                                    passive: false
+                                });
+                            }
+                        });
                     }
-                }
+                };
             }
         </script>
 
@@ -113,7 +140,7 @@
                 </template>
 
                 <div class="relative" x-show="showAllGenres || genres.length > visibleGenresCount">
-                    <button @click="showAllGenres = !showAllGenres"
+                    <button @click="showAllGenres = !showAllGenres; enableDropdownScroll()"
                         class="px-4 py-1 bg-neutral-800 rounded-lg flex items-center gap-1">
                         <span>More</span>
                         <svg class="w-4 h-4 transform" :class="{ 'rotate-180': showAllGenres }" fill="currentColor"
@@ -124,8 +151,8 @@
                         </svg>
                     </button>
 
-                    <div x-show="showAllGenres" @click.outside="showAllGenres = false"
-                        class="absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40" x-transition>
+                    <div id="more" x-ref="moreDropdown" x-show="showAllGenres" @click.outside="showAllGenres = false"
+                        class="absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40 max-h-56 overflow-y-auto" x-transition>
                         <template x-for="genre in hiddenGenres" :key="'more-' + genre.id">
                             <button @click="activeGenre = genre.id; showAllGenres = false"
                                 class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-700"
