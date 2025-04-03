@@ -26,7 +26,7 @@
         </style>
 
 
-        <div class="relative w-screen h-[90vh] bg-black">
+        <div class="relative w-screen h-[90vh] bg-black font-sans">
             <div class="swiper-container w-full h-full">
                 <div class="swiper-wrapper">
 
@@ -255,10 +255,8 @@
         </style>
 
         <div class="!bg-neutral-900 mt-6 py-12 w-full text-neutral-500 font-extrabold mx-auto pl-6 md:pl-8">
-                <h2 class="text-2xl md:text-4xl">
-                    <a href="{{ route('platform.subscription') }}" class="sparkle text-white !hover:sparkleHover">
+                <h2 class="text-2xl md:text-4xl sparkle text-white !hover:sparkleHover">
                         Wanna watch?
-                    </a>
                 </h2>
                 <h4 class="text-wrap break-words text-neutral-300 text-xs md:text-lg hover:text-orange-500 hover:underline hover:cursor">
                     <a href="{{ route('platform.subscription') }}">

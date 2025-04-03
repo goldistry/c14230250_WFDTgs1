@@ -24,7 +24,6 @@ class SubscriptionController extends Controller
         $decoded = $response->getData(true);
         $subscriptions = $decoded['data']; 
         $data['subscriptions'] = $subscriptions;
-        // dd($data);
 
         return view('subscription', $data);
     }
