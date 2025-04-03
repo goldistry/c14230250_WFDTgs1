@@ -14,22 +14,22 @@ class SubscriptionSeeder extends Seeder
             [
                 'name' => 'Netflix',
                 'website' => 'https://www.netflix.com/',
-                'monthly_price' => '9.99$',
-                'yearly_price'  => '99$',
+                'monthly_price' => '$5.99',
+                'yearly_price'  => '$49',
                 'logo' => 'streaming/netflix.png'
             ],
             [
                 'name' => 'WeTV',
-                'website' => 'https://wetv.example.com/',
-                'monthly_price' => '6.99$',
-                'yearly_price'  => '89.99$',
+                'website' => 'https://wetv.vip/en',
+                'monthly_price' => '$4.99',
+                'yearly_price'  => '$39.99',
                 'logo' => 'streaming/wetv.png'
             ],
             [
                 'name' => 'Disney+ Hotstar',
                 'website' => 'https://www.hotstar.com/',
-                'monthly_price' => '9.99$',
-                'yearly_price'  => '89.99$',
+                'monthly_price' => '$7.99',
+                'yearly_price'  => '$59.99',
                 'logo' => 'streaming/disneyplus.png'
             ],
         ];

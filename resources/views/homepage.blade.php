@@ -66,7 +66,7 @@
                     @endforeach
 
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination absolute bottom-4 left-0 w-full flex justify-center z-20"></div>
             </div>
         </div>
 

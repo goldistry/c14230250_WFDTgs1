@@ -96,7 +96,7 @@
                                         Limited Downloads
                                     </li>
                                 </ul>
-                                <a href="{{ $subscription['website'] }}"
+                                <a href="{{ $subscription['website'] }}" target="_blank" rel="noopener noreferrer"
                                     class="block w-full mt-8 bg-orange-600 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900 focus:ring-orange-400 text-white text-center font-semibold py-3 px-5 rounded-lg transition duration-300 transform hover:scale-[1.02]"
                                     @click.stop>
                                     Subscribe to {{ $subscription['name'] }}
