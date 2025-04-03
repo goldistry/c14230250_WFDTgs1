@@ -16,15 +16,15 @@
         @include('navbar')
         <style>
             .swiper-pagination-bullet {
-                background: #4b5563 !important; 
+                background: #4b5563 !important;
                 opacity: 1;
             }
-        
+
             .swiper-pagination-bullet-active {
                 background: #f97316 !important;
             }
         </style>
-        
+
 
         <div class="relative w-screen h-[90vh] bg-black">
             <div class="swiper-container w-full h-full">
@@ -163,7 +163,8 @@
                     </button>
 
                     <div id="more" x-ref="moreDropdown" x-show="showAllGenres" @click.outside="showAllGenres = false"
-                        class="absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40 max-h-48 overflow-y-auto" x-transition>
+                        class="absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40 max-h-48 overflow-y-auto"
+                        x-transition>
                         <template x-for="genre in hiddenGenres" :key="'more-' + genre.id">
                             <button @click="activeGenre = genre.id; showAllGenres = false"
                                 class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-700"
@@ -219,8 +220,8 @@
 
         <div class="fixed bottom-6 right-6 z-50 group">
             <a href="{{ route('drama.add') }}"
-                class="bg-orange-500 hover:bg-orange-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                class="bg-orange-500 hover:bg-orange-600 text-white rounded-full w-10 h-10 md:w-14 md:h-14 flex items-center justify-center shadow-lg transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
@@ -230,6 +231,41 @@
                 class="absolute right-16 bottom-[150%] translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-800 text-white text-sm px-4 py-2 rounded-md shadow-md whitespace-nowrap pointer-events-none">
                 Add a new drama
             </div>
+        </div>
+
+        <style>
+            @keyframes sparkle {
+                0% {
+                    text-shadow: 0 0 2px orange, 0 0 4px orange;
+                }
+
+                50% {
+                    text-shadow: 0 0 4px orange, 0 0 8px orange;
+                }
+
+                100% {
+                    text-shadow: 0 0 2px orange, 0 0 4px orange;
+                }
+            }
+
+            .sparkle {
+                animation: sparkle 3s infinite;
+                transition: color 0.3s ease;
+            }
+        </style>
+
+        <div class="!bg-neutral-900 mt-6 py-12 w-full text-neutral-500 font-extrabold mx-auto pl-6 md:pl-8">
+                <h2 class="text-2xl md:text-4xl">
+                    <a href="{{ route('platform.subscription') }}" class="sparkle text-white !hover:sparkleHover">
+                        Wanna watch?
+                    </a>
+                </h2>
+                <h4 class="text-wrap break-words text-neutral-300 text-xs md:text-lg hover:text-orange-500 hover:underline hover:cursor">
+                    <a href="{{ route('platform.subscription') }}">
+                        Go Look Our Platform Recommendations
+                    </a>
+                </h4>
+          
         </div>
 
     </div>

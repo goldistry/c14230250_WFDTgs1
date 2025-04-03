@@ -50,7 +50,7 @@ class ResourceController extends Controller
         })->toArray();
         
 
-        $data['title'] = 'Lotus Tales | Homepage';
+        $data['title'] = 'Homepage';
         $data['dramas'] = $dramas;
         // dd($data);
 
@@ -65,7 +65,7 @@ class ResourceController extends Controller
 
     public function addDrama()
     {
-        $data['title'] = 'Lotus Tales | Add drama';
+        $data['title'] = 'Add drama';
         $response = $this->genreController->index();
         $decoded = $response->getData(true);
         $genres = $decoded['data'];
@@ -142,7 +142,7 @@ class ResourceController extends Controller
         }
     
         $data['details'] = $drama;
-        $data['title'] = 'Lotus Tales | ' . $drama['title'];
+        $data['title'] = '' . $drama['title'];
     
         return view('detailDrama', $data);
     }    
@@ -161,7 +161,7 @@ class ResourceController extends Controller
         }
     
         $data['details'] = $drama;
-        $data['title'] = 'Lotus Tales | Edit ' . $drama['title'];
+        $data['title'] = 'Edit ' . $drama['title'];
         $response = $this->genreController->index();
         $decoded = $response->getData(true);
         $genres = $decoded['data'];

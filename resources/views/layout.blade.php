@@ -33,7 +33,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('logo.png') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>{{ $title }}</title>
+    <title>Lotus Tales | {{ $title }}</title>
 
 
     @yield('head')
