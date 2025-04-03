@@ -217,8 +217,6 @@
             </div>
         </div>
 
-
-        <!-- Button add drama -->
         <div class="fixed bottom-6 right-6 z-50 group">
             <a href="{{ route('drama.add') }}"
                 class="bg-orange-500 hover:bg-orange-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-all duration-300">
@@ -227,7 +225,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
             </a>
-            <!-- tooltip bubble -->
+            {{-- tooltip bubble  --}}
             <div
                 class="absolute right-16 bottom-[150%] translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-800 text-white text-sm px-4 py-2 rounded-md shadow-md whitespace-nowrap pointer-events-none">
                 Add a new drama

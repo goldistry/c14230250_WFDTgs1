@@ -16,8 +16,7 @@
         </script>
     @endif
 
-    <div class="mt-12 p-8 md:p-12 min-h-screen bg-black text-white w-full">
-        <h1 class="text-2xl font-bold mb-6">Edit Drama</h1>
+    <div class="mt-12 p-8 md:p-12 min-h-screen bg-black text-white w-full flex justify-center items-center">
 
         @if ($errors->any())
             <div class="bg-red-700 text-white p-4 rounded mb-4">
@@ -30,7 +29,10 @@
             </div>
         @endif
 
-        <div class="w-full border-2 border-white rounded-xl p-4">
+        <div class="w-full md:max-w-7xl bg-neutral-950 border-1 border-neutral-700 rounded-xl p-6">
+            <div class="flex justify-center items-center">
+                <h1 class="text-2xl font-bold mb-6">Edit Drama</h1>
+            </div>
             <form id="editForm" enctype="multipart/form-data" method="POST"
                 action="{{ route('drama.edit.save', ['id' => $details['id']]) }}">
                 @csrf
@@ -38,12 +40,12 @@
 
                 <div class="mb-4">
                     <label for="title" class="block font-semibold">Title</label>
-                    <input type="text" name="title" id="title" class="w-full bg-neutral-800 rounded p-2 mt-1"
+                    <input type="text" name="title" id="title" class="w-full bg-neutral-800 rounded p-2 mt-1 border border-neutral-600" 
                         value="{{ old('title', $details['title']) }}" required>
                 </div>
                 <div class="mb-4">
                     <label for="description" class="block font-semibold">Description</label>
-                    <textarea name="description" id="description" rows="4" class="w-full bg-neutral-800 rounded p-2 mt-1" required>{{ old('description', $details['description']) }}</textarea>
+                    <textarea name="description" id="description" rows="4" class="w-full bg-neutral-800 rounded p-2 mt-1 border border-neutral-600" required>{{ old('description', $details['description']) }}</textarea>
                 </div>
                 <div class="mb-4">
                     <label class="block font-semibold mb-2">Current Images</label>
@@ -72,7 +74,7 @@
                     </label>
 
                     <label for="image"
-                        class="flex flex-col items-center justify-center w-full sm:w-[300px] px-4 py-6 bg-neutral-800 text-white rounded-lg shadow-md tracking-wide uppercase border border-white cursor-pointer hover:bg-neutral-700 transition duration-200">
+                        class="flex flex-col items-center justify-center w-full px-4 py-6 bg-neutral-800 text-gray-400 rounded-lg shadow-md tracking-wide uppercase border border-neutral-600 cursor-pointer hover:bg-neutral-700 transition duration-200">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -103,9 +105,12 @@
                     <p class="text-sm text-gray-400 mt-2">* Pilih satu atau lebih genre yang sesuai.</p>
                 </div>
 
-                <button type="submit" class="px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded text-white font-bold">
-                    Update Drama
-                </button>
+                <div class="flex justify-center items-center">
+                    <button type="submit" class="w-full px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded text-white font-bold">
+                        Update Drama
+                    </button>
+                </div>
+               
             </form>
         </div>
     </div>

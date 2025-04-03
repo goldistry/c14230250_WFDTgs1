@@ -91,7 +91,7 @@
 
 </head>
 
-<body class="bg-black">
+<body class="bg-neutral-950">
     <div>
         @if (!Request::is('/homepage'))
             @include('navbar')

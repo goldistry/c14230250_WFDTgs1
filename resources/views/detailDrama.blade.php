@@ -3,7 +3,7 @@
 @section('content')
     <div class="mt-12 px-8 md:px-32 py-8 md:py-12 bg-black text-white flex justify-center items-center">
         <div
-            class="w-full py-12 px-6 rounded-lg bg-gray-800 space-y-6 flex flex-col justify-center items-center">
+            class="md:mt-10 w-full md:max-w-5xl py-12 px-6 rounded-lg bg-neutral-800 space-y-6 flex flex-col justify-center items-center">
             <h1 class="text-3xl font-bold text-orange-500 text-center">{{ $details['title'] }}</h1>
             <div class="aspect-[3/4] border border-white rounded overflow-hidden w-full max-w-xs">
                 <img src="{{ asset('storage/' . $details['image'][0]) }}" alt="{{ $details['title'] }}"

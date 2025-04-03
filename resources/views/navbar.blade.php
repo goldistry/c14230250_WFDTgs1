@@ -5,7 +5,7 @@
             <h1 class="questrial-title text-md sm:text-lg md:text-2xl text-white">Lotus Tales</h1>
         </div>
 
-        <!-- Search bar cuman di homepage -->
+        {{-- search bar cuman di homepage --}}
         @if (Request::is('/'))
         <div class="flex items-center h-6 md:h-10">
             <input 
