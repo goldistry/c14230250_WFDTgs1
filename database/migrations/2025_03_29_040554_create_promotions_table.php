@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->json('image');
             $table->timestamps();
         });

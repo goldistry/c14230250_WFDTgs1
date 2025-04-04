@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    @if (session('success'))
+    {{-- @if (session('success'))
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 Swal.fire({
@@ -14,7 +14,7 @@
                 });
             });
         </script>
-    @endif
+    @endif --}}
 
     <div class="mt-12 p-8 md:p-12 min-h-screen bg-black text-white w-full flex justify-center items-center">
 

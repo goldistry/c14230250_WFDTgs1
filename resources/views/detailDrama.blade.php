@@ -21,7 +21,7 @@
             </div>
             <div class="w-full flex flex-col justify-center items-center">
                 <h2 class="text-xl font-semibold mb-2">Description:</h2>
-                <p class="text-white leading-relaxed text-justify">
+                <p class="desc text-white leading-relaxed text-justify max-w-[80%] max-h-56 overflow-y-auto px-2 md:px-6">
                     {{ $details['description'] }}
                 </p>
             </div>
@@ -112,5 +112,9 @@
                     console.error('Error:', error);
                 });
         }
+        desc = document.querySelector('.desc')
+        desc.addEventListener('wheel', (e) => {
+            e.stopPropagation(); 
+        });
     </script>
 @endsection

@@ -13,13 +13,14 @@
                 <div class="mb-4">
                     <label for="title" class="block font-semibold">Title</label>
                     <input type="text" name="title" id="title" placeholder="Enter drama title"
-                        class="w-full bg-neutral-800 rounded border border-neutral-600 px-3 py-2 mt-1 text-white" value="{{ old('title') }}" required>
+                        class="w-full bg-neutral-800 rounded border border-neutral-600 px-3 py-2 mt-1 text-white"
+                        value="{{ old('title') }}" required>
                 </div>
 
                 <div class="mb-4">
                     <label for="description" class="block font-semibold">Description</label>
-                    <textarea name="description" id="description" rows="4" placeholder="Describe the drama" class="w-full bg-neutral-800 rounded border border-neutral-600 px-3 py-2 mt-1 text-white"
-                        required>{{ old('description') }}</textarea>
+                    <textarea name="description" id="description" rows="4" placeholder="Describe the drama"
+                        class="w-full bg-neutral-800 rounded border border-neutral-600 px-3 py-2 mt-1 text-white" required>{{ old('description') }}</textarea>
                 </div>
 
                 <div class="mb-4 w-full">
@@ -35,7 +36,7 @@
                             </path>
                         </svg>
                         <span class="mt-2 text-base leading-normal">Select Images</span>
-                        <input id="image" type="file" name="image[]" accept="image/*" multiple class="hidden " >
+                        <input id="image" type="file" name="image[]" accept="image/*" multiple class="hidden ">
                     </label>
                     <div id="previewContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4"></div>
                 </div>
@@ -55,12 +56,13 @@
                     <p class="text-sm text-gray-400 mt-2">* Pilih satu atau lebih genre yang sesuai.</p>
                 </div>
                 <div class="flex justify-center items-center">
-                    <button type="submit" class="w-full px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded text-white font-bold">
+                    <button type="submit"
+                        class="w-full px-6 py-2 bg-orange-500 hover:bg-orange-600 rounded text-white font-bold">
                         Add Drama
                     </button>
                 </div>
 
-                
+
             </form>
         </div>
     </div>
@@ -182,6 +184,17 @@
                             const selectedGenres = Array.from(document.querySelectorAll(
                                 'input[name="genre[]"]:checked')).map(cb => cb.value);
                             formData.append('genres', JSON.stringify(selectedGenres));
+                            Swal.fire({
+                                title: 'Processing...',
+                                html: '<b>Sedang mengunggah drama</b>',
+                                allowOutsideClick: false,
+                                showConfirmButton: false,
+                                background: '#1f2937',
+                                color: '#fff',
+                                didOpen: () => {
+                                    Swal.showLoading();
+                                }
+                            });
 
                             fetch("{{ route('drama.add.save') }}", {
                                     method: "POST",
@@ -199,6 +212,7 @@
                                     return response.json();
                                 })
                                 .then(data => {
+                                    Swal.close();
                                     Swal.fire({
                                         icon: 'success',
                                         title: 'Berhasil!',
@@ -212,6 +226,7 @@
                                     });
                                 })
                                 .catch(error => {
+                                    Swal.close();
                                     Swal.fire({
                                         icon: 'error',
                                         title: 'Oops!',

@@ -102,35 +102,40 @@
                         });
                     },
 
-                    enableDropdownScroll() {
-                        this.$nextTick(() => {
-                            const dropdown = this.$refs.moreDropdown;
-                            if (dropdown) {
-                                dropdown.addEventListener('wheel', function(e) {
-                                    const el = this;
-                                    const scrollTop = el.scrollTop;
-                                    const scrollHeight = el.scrollHeight;
-                                    const offsetHeight = el.offsetHeight;
-                                    const delta = e.deltaY;
 
-                                    const up = delta < 0;
-                                    const down = delta > 0;
+                    // enableDropdownScroll() {
+                    //     this.$nextTick(() => {
+                    //         const dropdown = this.$refs.moreDropdown;
+                    //         if (dropdown) {
+                    //             dropdown.addEventListener('wheel', function(e) {
+                    //                 const el = this;
+                    //                 const scrollTop = el.scrollTop;
+                    //                 const scrollHeight = el.scrollHeight;
+                    //                 const offsetHeight = el.offsetHeight;
+                    //                 const delta = e.deltaY;
 
-                                    const atTop = scrollTop === 0;
-                                    const atBottom = scrollTop + offsetHeight >= scrollHeight - 1;
+                    //                 const up = delta < 0;
+                    //                 const down = delta > 0;
 
-                                    if ((up && atTop) || (down && atBottom)) {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                    }
-                                }, {
-                                    passive: false
-                                });
-                            }
-                        });
-                    }
+                    //                 const atTop = scrollTop === 0;
+                    //                 const atBottom = scrollTop + offsetHeight >= scrollHeight - 1;
+
+                    //                 if ((up && atTop) || (down && atBottom)) {
+                    //                     e.preventDefault();
+                    //                     e.stopPropagation();
+                    //                 }
+                    //             }, {
+                    //                 passive: false
+                    //             });
+                    //         }
+                    //     });
+                    // }
                 };
             }
+            more = document.querySelector('.more')
+            more.addEventListener('wheel', (e) => {
+                e.stopPropagation();
+            });
         </script>
 
         <div class="text-white px-6 md:px-26" x-data="genreTabs({{ json_encode($genres) }})" x-init="init()">
@@ -162,8 +167,8 @@
                         </svg>
                     </button>
 
-                    <div id="more" x-ref="moreDropdown" x-show="showAllGenres" @click.outside="showAllGenres = false"
-                        class="absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40 max-h-48 overflow-y-auto"
+                    <div x-ref="moreDropdown" x-show="showAllGenres" @click.outside="showAllGenres = false"
+                        class="more absolute z-50 mt-2 bg-neutral-900 shadow-lg rounded-lg py-2 w-40 max-h-48 overflow-y-auto"
                         x-transition>
                         <template x-for="genre in hiddenGenres" :key="'more-' + genre.id">
                             <button @click="activeGenre = genre.id; showAllGenres = false"
@@ -255,15 +260,16 @@
         </style>
 
         <div class="!bg-neutral-900 mt-6 py-12 w-full text-neutral-500 font-extrabold mx-auto pl-6 md:pl-8">
-                <h2 class="text-2xl md:text-4xl sparkle text-white !hover:sparkleHover">
-                        Wanna watch?
-                </h2>
-                <h4 class="text-wrap break-words text-neutral-300 text-xs md:text-lg hover:text-orange-500 hover:underline hover:cursor">
-                    <a href="{{ route('platform.subscription') }}">
-                        Go Look Our Platform Recommendations
-                    </a>
-                </h4>
-          
+            <h2 class="text-2xl md:text-4xl sparkle text-white !hover:sparkleHover">
+                Wanna watch?
+            </h2>
+            <h4
+                class="text-wrap break-words text-neutral-300 text-xs md:text-lg hover:text-orange-500 hover:underline hover:cursor">
+                <a href="{{ route('platform.subscription') }}">
+                    Go Look Our Platform Recommendations
+                </a>
+            </h4>
+
         </div>
 
     </div>
