@@ -1,21 +1,35 @@
 @extends('layout')
 
 @section('content')
-    {{-- @if (session('success'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil!',
-                    text: '{{ session('success') }}',
-                    confirmButtonColor: '#f97316',
-                    background: '#1f2937',
-                    color: '#fff'
-                });
-            });
-        </script>
-    @endif --}}
+@if (session('success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('success') }}',
+            confirmButtonColor: '#f97316',
+            background: '#1f2937',
+            color: '#fff'
+        });
+    });
+</script>
+@endif
 
+@if (session('error'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal!',
+            text: '{{ session('error') }}',
+            confirmButtonColor: '#dc3545',
+            background: '#1f2937',
+            color: '#fff'
+        });
+    });
+</script>
+@endif
     <div class="mt-12 p-8 md:p-12 min-h-screen bg-black text-white w-full flex justify-center items-center">
 
         @if ($errors->any())

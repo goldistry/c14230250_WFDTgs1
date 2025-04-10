@@ -227,9 +227,8 @@ class ResourceController extends Controller
         $drama->image = $finalImages;
         $drama->genres()->sync($request->input('genre'));
         $drama->save();
-        return redirect()
-            ->route('homepage')
-            ->with('success', 'Drama berhasil diupdate!');
+        session()->flash('success', 'Drama berhasil diedit!');
+        return redirect()->route('drama.edit', ['id' => $id]);
     }
 
     //destroy pakai func di parent controller.php
